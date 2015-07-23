@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h2>Available topics</h2>
+</div>
+
+<div class="list-group">
+{{ range . }}
+  <a href="/available/{{ .Id.Hex }}" class="list-group-item">
+    <h5 class="list-group-item-heading">{{ .Ident }}</h5>
+    <span class="small text-muted">Channels: </span>
+    {{ range .Channels }}
+      <span class="small text-muted">{{ . }}</span>
+    {{ end }}
+    &nbsp;&nbsp;
+    <span class="small text-muted">Feature: {{ .AppName }}</span>
+  </a>
+{{ end }}
+</div>

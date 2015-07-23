@@ -1,4 +1,4 @@
-package topics
+package available
 
 import (
 	"gopkg.in/mgo.v2"
@@ -14,7 +14,7 @@ import (
  */
 
 func AddEdit(r render.Render) {
-	r.HTML(200, "topics/form", nil)
+	r.HTML(200, "available/form", nil)
 }
 
 /**
@@ -29,7 +29,7 @@ func Add(topic models.AvailableTopic, r render.Render, db *mgo.Database) {
 	if err != nil {
 		r.HTML(400, "400", err)
 	} else {
-		r.Redirect("/topics")
+		r.Redirect("/available")
 	}
 }
 
@@ -39,15 +39,15 @@ func Add(topic models.AvailableTopic, r render.Render, db *mgo.Database) {
 
 func List(r render.Render, params martini.Params, db *mgo.Database) {
 
-	var topics []models.AvailableTopic
+	var available []models.AvailableTopic
 
-	err := db.C("topics_available").Find(nil).Sort("-created_on").All(&topics)
+	err := db.C("topics_available").Find(nil).Sort("-created_on").All(&available)
 
 	if err != nil {
 		r.Error(400)
 	}
 
-	r.HTML(200, "topics/list", topics)
+	r.HTML(200, "available/list", available)
 }
 
 /**
@@ -65,5 +65,5 @@ func Show(params martini.Params, r render.Render, db *mgo.Database) {
 		r.HTML(400, "400", err)
 	}
 
-	r.HTML(200, "topics/show", topic)
+	r.HTML(200, "available/show", topic)
 }

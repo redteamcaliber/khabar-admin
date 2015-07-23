@@ -1,0 +1,13 @@
+<div class="page-header">
+  <h2>{{ .Ident }}</h2>
+</div>
+<p>
+  Feature: {{ .AppName }}
+</p>
+<p>
+  Channels:
+
+  {{ range .Channels }}
+    {{ . }} &nbsp;
+  {{ end }}
+</p>
