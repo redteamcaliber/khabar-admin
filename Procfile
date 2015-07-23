@@ -1,0 +1,1 @@
+web: khabar-admin

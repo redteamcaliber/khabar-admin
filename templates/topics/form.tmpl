@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h2>New available topic</h2>
+</div>
+
+<form action="/topics" method="POST">
+  <div class="form-group">
+    <label for="ident">Ident</label>
+    <input type="text" name="ident" class="form-control" id="ident" placeholder="Enter the ident">
+    <span class="help-block">This should be unique and readable</span>
+  </div>
+
+  <div class="form-group">
+    <label for="app_name">App name (feature name)</label>
+    <input type="text" name="app_name" class="form-control" id="app_name" placeholder="Enter the app_name of the article">
+  </div>
+
+  <div class="form-group">
+    <label for="app_name">Channels</label>
+    <select name="channels" multiple class="form-control" required>
+      <option value="email" selected>E-mail</option>
+      <option value="web" selected>Web</option>
+      <option value="push" selected>Push</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

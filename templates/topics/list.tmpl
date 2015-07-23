@@ -1,0 +1,13 @@
+<div class="page-header">
+  <h2>Topics available</h2>
+</div>
+
+<div class="list-group">
+{{ range . }}
+  <a href="/topics/{{ .Id.Hex }}" class="list-group-item">
+    <h5 class="list-group-item-heading">{{ .Ident }}</h5>
+    <span class="small text-muted">created on {{ .CreatedOn }}</span>
+    <span class="small text-muted">{{ .AppName }}</span>
+  </a>
+{{ end }}
+</div>
