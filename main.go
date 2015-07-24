@@ -36,9 +36,11 @@ func main() {
 
 	m.Group("/available", func(r martini.Router) {
 		r.Get("", available.List)
-		r.Get("/new", available.AddEdit)
-		r.Get("/:_id", available.Show)
-		r.Post("", binding.Bind(models.AvailableTopic{}), available.Add)
+		r.Get("/new", available.New)
+		r.Get("/:_id", available.Edit)
+		r.Post("", binding.Bind(models.AvailableTopic{}), available.Create)
+		r.Post("/:_id", binding.Bind(models.AvailableTopic{}), available.Update)
+		r.Delete("/:_id", available.Delete)
 	})
 
 	// Start listening

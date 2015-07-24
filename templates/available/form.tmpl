@@ -1,25 +1,30 @@
 <div class="page-header">
-  <h2>New available topic</h2>
+  <h2>{{ .Op }} available topic</h2>
 </div>
 
-<form action="/available" method="POST">
+<form action="/available/{{ .Topic.Id.Hex }}" method="POST">
+
+  {{ if .Topic.Id }}
+    <input type="hidden" name="_id" value="{{ .Topic.Id.Hex }}">
+  {{ end }}
+
   <div class="form-group">
     <label for="ident">Ident</label>
-    <input type="text" name="ident" class="form-control" id="ident" placeholder="Enter the ident">
+    <input type="text" name="ident" class="form-control" id="ident" placeholder="Enter the ident" value="{{ .Topic.Ident }}">
     <span class="help-block">This should be unique and readable</span>
   </div>
 
   <div class="form-group">
     <label for="app_name">App name (feature name)</label>
-    <input type="text" name="app_name" class="form-control" id="app_name" placeholder="Enter the app_name of the article">
+    <input type="text" name="app_name" class="form-control" id="app_name" placeholder="Enter the app_name of the article" value="{{ .Topic.AppName }}">
   </div>
 
   <div class="form-group">
     <label for="app_name">Channels</label>
     <select name="channels" multiple class="form-control" required>
-      <option value="email" selected>E-mail</option>
-      <option value="web" selected>Web</option>
-      <option value="push" selected>Push</option>
+      {{ range .Channels }}
+        <option value="{{ .Name }}" {{ if .Enabled }}selected{{ end }}>{{ .Name }}</option>
+      {{ end }}
     </select>
   </div>
 

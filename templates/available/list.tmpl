@@ -2,16 +2,24 @@
   <h2>Available topics</h2>
 </div>
 
+<p>
+  There are {{ len . }} available topics
+</p>
+
 <div class="list-group">
 {{ range . }}
-  <a href="/available/{{ .Id.Hex }}" class="list-group-item">
-    <h5 class="list-group-item-heading">{{ .Ident }}</h5>
-    <span class="small text-muted">Channels: </span>
+  <div class="list-group-item">
+    <h5 class="list-group-item-heading">
+      {{ .Ident }}
+      &nbsp;
+      <a href="/available/{{ .Id.Hex }}">edit</a>
+    </h5>
+    <span class="small text-muted"><b>channels: </b></span>
     {{ range .Channels }}
       <span class="small text-muted">{{ . }}</span>
     {{ end }}
     &nbsp;&nbsp;
-    <span class="small text-muted">Feature: {{ .AppName }}</span>
-  </a>
+    <span class="small text-muted"><b>feature: </b>{{ .AppName }}</span>
+  </div>
 {{ end }}
 </div>
