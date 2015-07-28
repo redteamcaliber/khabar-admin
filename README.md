@@ -1,3 +1,5 @@
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bulletind/khabar-admin?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 ## khabar-admin
 
 Manage khabar notifications and settings
