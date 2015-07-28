@@ -49,6 +49,7 @@ func New(r render.Render) {
 
 func Create(topic models.AvailableTopic, r render.Render, db *mgo.Database) {
 	topic.BeforeSave()
+	topic.Sanitize()
 	err := db.C(availableCollection).Insert(topic)
 	if err != nil {
 		r.HTML(400, "400", err)
@@ -107,6 +108,7 @@ func List(r render.Render, params martini.Params, db *mgo.Database) {
 
 func Update(params martini.Params, topic models.AvailableTopic, r render.Render, db *mgo.Database) {
 	query := bson.M{"_id": bson.ObjectIdHex(params["_id"])}
+	topic.Sanitize()
 	doc := bson.M{
 		"ident":      topic.Ident,
 		"app_name":   topic.AppName,
