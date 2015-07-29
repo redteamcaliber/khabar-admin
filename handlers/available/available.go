@@ -106,7 +106,7 @@ func Update(params martini.Params, topic khabar.AvailableTopic, r render.Render,
 		"channels":   topic.Channels,
 		"updated_on": time.Now().UnixNano() / int64(time.Millisecond),
 	}
-	err = db.C(khabar.AvailableTopicCollection).Update(query, doc)
+	err := db.C(khabar.AvailableTopicCollection).Update(query, doc)
 	if err != nil {
 		r.HTML(400, "400", err)
 	} else {
