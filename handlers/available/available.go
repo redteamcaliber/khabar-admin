@@ -1,9 +1,6 @@
 package available
 
 import (
-	"encoding/json"
-	"fmt"
-	"log"
 	"strings"
 	"time"
 
@@ -101,14 +98,6 @@ func List(r render.Render, params martini.Params, db *mgo.Database) {
 
 func Update(params martini.Params, topic khabar.AvailableTopic, r render.Render, db *mgo.Database) {
 	query := bson.M{"_id": bson.ObjectIdHex(params["_id"])}
-
-	fmt.Println("")
-	o, err := json.MarshalIndent(topic, "", "  ")
-	if err != nil {
-		fmt.Println("Error marshaling JSON")
-	}
-	log.Println(string(o))
-	fmt.Println("")
 
 	topic.Ident = sanitize(topic.Ident)
 	doc := bson.M{
