@@ -132,7 +132,6 @@ func Update(params martini.Params, req *http.Request, r render.Render, db *mgo.D
 		}
 		_, err := db.C(khabar.TopicCollection).Upsert(query, doc)
 
-		break
 		if err != nil {
 			log.Println(err)
 			break
