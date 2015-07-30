@@ -21,11 +21,11 @@
             <td>{{ $ident }}</td>
             <td>
               {{ if $val.email }}
-              <div class="row">
-                <div class="col-md-4">
+              <div class="clearfix">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                   <input type="checkbox" name="{{ $ident }}.email.default" value="{{ $val.email.Default }}" {{ if $val.email.Default }}checked{{ end }}>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                   <input type="checkbox" name="{{ $ident }}.email.locked" value="{{ $val.email.Locked }}" {{ if $val.email.Locked }}checked{{ end }}>
                 </div>
               </div>
@@ -33,11 +33,11 @@
             </td>
             <td>
               {{ if $val.web }}
-              <div class="row">
-                <div class="col-md-4">
+              <div class="clearfix">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                   <input type="checkbox" name="{{ $ident }}.web.default" value="{{ $val.web.Default }}" {{ if $val.web.Default }}checked{{ end }}>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                   <input type="checkbox" name="{{ $ident }}.web.locked" value="{{ $val.web.Locked }}" {{ if $val.web.Locked }}checked{{ end }}>
                 </div>
               </div>
@@ -45,11 +45,11 @@
             </td>
             <td>
               {{ if $val.push }}
-              <div class="row">
-                <div class="col-md-4">
+              <div class="clearfix">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                   <input type="checkbox" name="{{ $ident }}.push.default" value="{{ $val.push.Default }}" {{ if $val.push.Default }}checked{{ end }}>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                   <input type="checkbox" name="{{ $ident }}.push.locked" value="{{ $val.push.Locked }}" {{ if $val.push.Locked }}checked{{ end }}>
                 </div>
               </div>
