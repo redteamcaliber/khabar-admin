@@ -85,7 +85,7 @@ func Edit(params martini.Params, r render.Render, db *mgo.Database) {
 
 func List(r render.Render, params martini.Params, db *mgo.Database) {
 	var available []khabar.AvailableTopic
-	err := db.C(khabar.AvailableTopicCollection).Find(nil).Sort("-updated_on").All(&available)
+	err := db.C(khabar.AvailableTopicCollection).Find(nil).Sort("app_name").All(&available)
 	if err != nil {
 		r.Error(400)
 	}

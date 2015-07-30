@@ -2,24 +2,35 @@
   <h2>Available topics</h2>
 </div>
 
-<p>
-  There are {{ len . }} available topics
-</p>
+{{ $topics := . }}
 
-<div class="list-group">
-{{ range . }}
-  <div class="list-group-item">
-    <h5 class="list-group-item-heading">
-      {{ .Ident }}
-      &nbsp;
-      <a href="/available/{{ .Id.Hex }}">edit</a>
-    </h5>
-    <span class="small text-muted"><b>channels: </b></span>
-    {{ range .Channels }}
-      <span class="small text-muted">{{ . }}</span>
-    {{ end }}
-    &nbsp;&nbsp;
-    <span class="small text-muted"><b>feature: </b>{{ .AppName }}</span>
-  </div>
-{{ end }}
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>#</th>
+      <th>Ident <small class="text-muted">(event)</small></th>
+      <th>Channels</th>
+      <th>App <small class="text-muted">(feature)</small></th>
+    </thead>
+    <tbody>
+
+      {{ range $index, $available := $topics }}
+        <tr>
+          <td>{{ add $index 1 }}.</td>
+          <td>
+            <a href="/available/{{ .Id.Hex }}">{{ $available.Ident }}</a>
+          </td>
+          <td>
+            {{ range $channel := $available.Channels }}
+              {{ $channel }} &nbsp;
+            {{ end }}
+          </td>
+          <td>
+            {{ $available.AppName }}
+          </td>
+        </tr>
+      {{ end }}
+
+    </tbody>
+  </table>
 </div>
