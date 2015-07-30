@@ -24,3 +24,7 @@ body {
 body > .container {
   padding: 60px 15px 0;
 }
+
+small.text-muted {
+  font-weight: normal;
+}

@@ -1,0 +1,68 @@
+<div class="page-header">
+  <h2>Global notification preferences</h2>
+</div>
+
+<p>
+  There are {{ len . }} global preferences
+</p>
+
+<form action="/topics" method="POST">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <th>Ident</th>
+        <th>Email <small class="text-muted">(default &nbsp; locked)</small></th>
+        <th>Web <small class="text-muted">(default &nbsp; locked)</small></th>
+        <th>Push <small class="text-muted">(default &nbsp; locked)</small></th>
+      </thead>
+      <tbody>
+        {{ range $ident, $val := index . }}
+          <tr>
+            <td>{{ $ident }}</td>
+            <td>
+              {{ if $val.email }}
+              <div class="row">
+                <div class="col-md-4">
+                  <input type="checkbox" name="{{ $ident }}.email.default" value="{{ $val.email.Default }}" {{ if $val.email.Default }}checked{{ end }}>
+                </div>
+                <div class="col-md-4">
+                  <input type="checkbox" name="{{ $ident }}.email.locked" value="{{ $val.email.Locked }}" {{ if $val.email.Locked }}checked{{ end }}>
+                </div>
+              </div>
+              {{ end }}
+            </td>
+            <td>
+              {{ if $val.web }}
+              <div class="row">
+                <div class="col-md-4">
+                  <input type="checkbox" name="{{ $ident }}.web.default" value="{{ $val.web.Default }}" {{ if $val.web.Default }}checked{{ end }}>
+                </div>
+                <div class="col-md-4">
+                  <input type="checkbox" name="{{ $ident }}.web.locked" value="{{ $val.web.Locked }}" {{ if $val.web.Locked }}checked{{ end }}>
+                </div>
+              </div>
+              {{ end }}
+            </td>
+            <td>
+              {{ if $val.push }}
+              <div class="row">
+                <div class="col-md-4">
+                  <input type="checkbox" name="{{ $ident }}.push.default" value="{{ $val.push.Default }}" {{ if $val.push.Default }}checked{{ end }}>
+                </div>
+                <div class="col-md-4">
+                  <input type="checkbox" name="{{ $ident }}.push.locked" value="{{ $val.push.Locked }}" {{ if $val.push.Locked }}checked{{ end }}>
+                </div>
+              </div>
+              {{ end }}
+            </td>
+          </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-default">Update</button>
+  </div>
+  <br>
+</form>

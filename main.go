@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/bulletind/khabar-admin/handlers/available"
+	"github.com/bulletind/khabar-admin/handlers/topics"
 	"github.com/bulletind/khabar-admin/middlewares"
 	khabar "github.com/bulletind/khabar/db"
 	"github.com/go-martini/martini"
@@ -43,14 +44,10 @@ func main() {
 		r.Delete("/:_id", available.Delete)
 	})
 
-	// m.Group("/topics", func(r martini.Router) {
-	// 	r.Get("", topics.List)
-	// 	r.Get("/new", topics.New)
-	// 	r.Get("/:_id", topics.Edit)
-	// 	r.Post("", binding.Bind(khabar.Topic{}), topics.Create)
-	// 	r.Post("/:_id", binding.Bind(khabar.Topic{}), topics.Update)
-	// 	r.Delete("/:_id", topics.Delete)
-	// })
+	m.Group("/topics", func(r martini.Router) {
+		r.Get("", topics.List)
+		r.Post("", topics.Update)
+	})
 
 	// Start listening
 	m.Run()
