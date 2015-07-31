@@ -28,3 +28,7 @@ body > .container {
 small.text-muted {
   font-weight: normal;
 }
+
+i.fa-trash {
+  color: red;
+}

@@ -11,6 +11,7 @@
       <th>Ident <small class="text-muted">(event)</small></th>
       <th>Channels</th>
       <th>App <small class="text-muted">(feature)</small></th>
+      <th></th>
     </thead>
     <tbody>
 
@@ -27,6 +28,13 @@
           </td>
           <td>
             {{ $available.AppName }}
+          </td>
+          <td>
+            <form action="/available/{{ .Id.Hex }}/delete" method="POST">
+              <a href="javascript:void(0);" onclick="if (confirm('Are you sure you want to delete {{ $available.Ident }}?')) document.forms[{{ $index }}].submit();">
+                <i class="fa fa-trash"></i>
+              </a>
+            </form>
           </td>
         </tr>
       {{ end }}

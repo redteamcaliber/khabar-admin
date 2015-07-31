@@ -41,7 +41,7 @@ func main() {
 		r.Get("/:_id", available.Edit)
 		r.Post("", binding.Bind(khabar.AvailableTopic{}), available.Create)
 		r.Post("/:_id", binding.Bind(khabar.AvailableTopic{}), available.Update)
-		r.Delete("/:_id", available.Delete)
+		r.Post("/:_id/delete", available.Delete)
 	})
 
 	m.Group("/topics", func(r martini.Router) {
