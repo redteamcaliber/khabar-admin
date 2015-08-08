@@ -28,7 +28,7 @@ func New(c *gin.Context) {
 		},
 	}
 
-	c.HTML(http.StatusOK, "events-form.html", gin.H{
+	c.HTML(http.StatusOK, "events/form", gin.H{
 		"title": "New event",
 		"form":  form,
 	})
@@ -78,7 +78,7 @@ func Edit(c *gin.Context) {
 		}
 	}
 
-	c.HTML(http.StatusOK, "events-form.html", gin.H{
+	c.HTML(http.StatusOK, "events/form", gin.H{
 		"title": "Edit event",
 		"form":  form,
 	})
@@ -92,7 +92,7 @@ func List(c *gin.Context) {
 	if err != nil {
 		c.Error(err)
 	}
-	c.HTML(http.StatusOK, "events-list.html", gin.H{
+	c.HTML(http.StatusOK, "events/list", gin.H{
 		"title":  "Events",
 		"events": events,
 	})

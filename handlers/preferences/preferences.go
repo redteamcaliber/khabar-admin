@@ -92,7 +92,7 @@ func List(c *gin.Context) {
 
 	form.Preferences = preferences
 
-	c.HTML(http.StatusOK, "preferences-form.html", gin.H{
+	c.HTML(http.StatusOK, "preferences/form", gin.H{
 		"title": "Global notification preferences",
 		"form":  form,
 	})

@@ -11,6 +11,7 @@ import (
 	"github.com/bulletind/khabar-admin/handlers/preferences"
 	"github.com/bulletind/khabar-admin/middlewares"
 	"github.com/gin-gonic/gin"
+	"github.com/madhums/go-gin-mgo-demo/gin_html_render"
 )
 
 const (
@@ -26,7 +27,15 @@ func main() {
 
 	// Configure
 	router := gin.Default()
-	router.HTMLRender = render()
+
+	// Set html render options
+	htmlRender := gin_html_render.New()
+	htmlRender.Debug = gin.IsDebugging()
+	htmlRender.Layout = "layouts/default"
+
+	// Tell gin to use our html render
+	router.HTMLRender = htmlRender.Create()
+
 	router.RedirectTrailingSlash = true
 	router.RedirectFixedPath = true
 
