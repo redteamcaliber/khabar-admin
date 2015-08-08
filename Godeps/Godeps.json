@@ -20,10 +20,6 @@
 			"Rev": "c6e57601f0f21a7bb5e0c4f8662537d70431f74f"
 		},
 		{
-			"ImportPath": "github.com/gin-gonic/contrib/renders/multitemplate",
-			"Rev": "915fc6822dbf9137dafbd7f65cd7a58f5260d35b"
-		},
-		{
 			"ImportPath": "github.com/gin-gonic/gin",
 			"Comment": "v1.0rc1-136-gfd5d429",
 			"Rev": "fd5d4294a5d5223d55fc76d7840f4b0ad91647bb"
@@ -31,6 +27,10 @@
 		{
 			"ImportPath": "github.com/gorilla/schema",
 			"Rev": "21fdbd3ea3fa38707fb920c7b65b51931b1ac53a"
+		},
+		{
+			"ImportPath": "github.com/madhums/go-gin-mgo-demo/gin_html_render",
+			"Rev": "f425b4b28d73a4969d3a3f94077c2628bbeb45cd"
 		},
 		{
 			"ImportPath": "github.com/manucorporat/sse",
