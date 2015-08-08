@@ -11,44 +11,43 @@
 		},
 		{
 			"ImportPath": "github.com/bulletind/khabar/db",
-			"Comment": "v1.4-114-g2898e20",
-			"Rev": "2898e20fd50f3951bf79a917d106ce57ded6a53f"
+			"Comment": "v1.4-155-gc6e5760",
+			"Rev": "c6e57601f0f21a7bb5e0c4f8662537d70431f74f"
 		},
 		{
 			"ImportPath": "github.com/bulletind/khabar/utils",
-			"Comment": "v1.4-114-g2898e20",
-			"Rev": "2898e20fd50f3951bf79a917d106ce57ded6a53f"
+			"Comment": "v1.4-155-gc6e5760",
+			"Rev": "c6e57601f0f21a7bb5e0c4f8662537d70431f74f"
 		},
 		{
-			"ImportPath": "github.com/codegangsta/inject",
-			"Comment": "v1.0-rc1-10-g33e0aa1",
-			"Rev": "33e0aa1cb7c019ccc3fbe049a8262a6403d30504"
+			"ImportPath": "github.com/gin-gonic/contrib/renders/multitemplate",
+			"Rev": "915fc6822dbf9137dafbd7f65cd7a58f5260d35b"
 		},
 		{
-			"ImportPath": "github.com/go-martini/martini",
-			"Comment": "v1.0-130-g17752b2",
-			"Rev": "17752b20aa29c599c7b6c22f1901d63983c5c25b"
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.0rc1-136-gfd5d429",
+			"Rev": "fd5d4294a5d5223d55fc76d7840f4b0ad91647bb"
 		},
 		{
 			"ImportPath": "github.com/gorilla/schema",
 			"Rev": "21fdbd3ea3fa38707fb920c7b65b51931b1ac53a"
 		},
 		{
-			"ImportPath": "github.com/martini-contrib/binding",
-			"Rev": "8aaceec3b52c275477f32c95ea5c6e8ccaba04c5"
+			"ImportPath": "github.com/manucorporat/sse",
+			"Rev": "fe6ea2c8e398672518ef204bf0fbd9af858d0e15"
 		},
 		{
-			"ImportPath": "github.com/martini-contrib/render",
-			"Rev": "ec18f8345a1181146728238980606fb1d6f40e8c"
+			"ImportPath": "github.com/mattn/go-colorable",
+			"Rev": "40e4aedc8fabf8c23e040057540867186712faa5"
 		},
 		{
-			"ImportPath": "github.com/oxtoacart/bpool",
-			"Rev": "4e1c5567d7c2dd59fa4c7c83d34c2f3528b025d6"
+			"ImportPath": "golang.org/x/net/context",
+			"Rev": "51854aba4682903632d14998d47781fe34e62a02"
 		},
 		{
-			"ImportPath": "github.com/tj/go-debug",
-			"Comment": "v2.0.0",
-			"Rev": "ff4a55a20a86994118644bbddc6a216da193cc13"
+			"ImportPath": "gopkg.in/bluesuncorp/validator.v5",
+			"Comment": "v5.10.3",
+			"Rev": "77108103e5fd435ff31967e1a011fda801391c85"
 		},
 		{
 			"ImportPath": "gopkg.in/mgo.v2",

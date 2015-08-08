@@ -1,0 +1,63 @@
+{{ define "content" }}
+<div class="page-header">
+  <h2>{{ .title }}</h2>
+</div>
+
+{{ $preferences := .form.Preferences }}
+{{ $channels := .form.Channels }}
+
+<form action="/preferences" method="POST">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <th>#</th>
+        <th>Event</th>
+        <th>Email <small class="text-muted">(default &nbsp; locked)</small></th>
+        <th>Web <small class="text-muted">(default &nbsp; locked)</small></th>
+        <th>Push <small class="text-muted">(default &nbsp; locked)</small></th>
+      </thead>
+      <tbody>
+
+        {{ range $i, $preference := $preferences }}
+
+          <input type="hidden" name="Preference.{{ $i }}.Ident" value="{{ $preference.Ident }}">
+
+          <tr>
+            <td>{{ $i }}.</td>
+            <td>{{ $preference.Ident }}</td>
+
+            {{ range $j, $ch := $channels }}
+
+              <td>
+                {{ range $k, $channel := $preference.Channels }}
+                  {{ if eq $channel.Name $ch }}
+
+                    <input type="hidden" name="Preference.{{ $i }}.Channels.{{ $j }}.Name" value="{{ $channel.Name }}">
+
+                    <div class="clearfix">
+                      <div class="col-md-4 col-sm-4 col-xs-4">
+                        <input type="checkbox" name="Preference.{{ $i }}.Channels.{{ $j }}.Default" {{ if $channel.Default }}checked{{ end }}>
+                      </div>
+                      <div class="col-md-4 col-sm-4 col-xs-4">
+                        <input type="checkbox" name="Preference.{{ $i }}.Channels.{{ $j }}.Locked" {{ if $channel.Locked }}checked{{ end }}>
+                      </div>
+                    </div>
+                  {{ end }}
+                {{ end }}
+              </td>
+
+            {{ end }}
+          </tr>
+
+        {{ end }}
+
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-default">Update</button>
+  </div>
+  <br>
+</form>
+{{ end }}

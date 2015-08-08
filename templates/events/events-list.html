@@ -1,0 +1,46 @@
+{{ define "content" }}
+<div class="page-header">
+  <h2>{{ .title }} <a class="btn btn-default" href="/new/events">New</a></h2>
+</div>
+
+{{ $events := .events }}
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <th>#</th>
+      <th>Event</th>
+      <th>Channels</th>
+      <th>Category</th>
+      <th></th>
+    </thead>
+    <tbody>
+
+      {{ range $index, $event := $events }}
+        <tr>
+          <td>{{ $index }}.</td>
+          <td>
+            <a href="/events/{{ $event.Id.Hex }}">{{ $event.Ident }}</a>
+          </td>
+          <td>
+            {{ range $channel := $event.Channels }}
+              {{ $channel }} &nbsp;
+            {{ end }}
+          </td>
+          <td>
+            {{ $event.AppName }}
+          </td>
+          <td>
+            <form action="/delete/events/{{ .Id.Hex }}" method="POST">
+              <a href="javascript:void(0);" onclick="if (confirm('Are you sure you want to delete {{ $event.Ident }}?')) document.forms[{{ $index }}].submit();">
+                <i class="fa fa-trash"></i>
+              </a>
+            </form>
+          </td>
+        </tr>
+      {{ end }}
+
+    </tbody>
+  </table>
+</div>
+{{ end }}

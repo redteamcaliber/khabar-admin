@@ -10,7 +10,6 @@ const (
 	SentCollection       = "sent_notifications"
 	StatsCollection      = "last_seen_at"
 	TopicCollection      = "topics"
-	GullyCollection      = "gullys"
 	UserLocaleCollection = "user_locales"
 
 	SavedEmailCollection     = "saved_email"
@@ -18,8 +17,6 @@ const (
 	SavedWebCollection       = "saved_web"
 	AvailableTopicCollection = "topics_available"
 
-	DefaultsCollection  = "defaults"
-	LocksCollection     = "locks"
 	ProcessedCollection = "processed"
 )
 
@@ -27,22 +24,6 @@ type Processed struct {
 	BaseModel    `bson:",inline"`
 	User         string `bson:"user"`
 	Organization string `bson:"org"`
-}
-
-type Defaults struct {
-	BaseModel    `bson:",inline"`
-	Organization string   `json:"org" bson:"org"`
-	Topic        string   `json:"ident" bson:"ident" required:"true"`
-	Channels     []string `json:"channels" bson:"channels" required:"true"`
-	Enabled      bool     `json:"enabled" bson:"enabled"`
-}
-
-type Locks struct {
-	BaseModel    `bson:",inline"`
-	Organization string   `json:"org" bson:"org" required:"true"`
-	Topic        string   `json:"ident" bson:"ident" required:"true"`
-	Channels     []string `json:"channels" bson:"channels" required:"true"`
-	Enabled      bool     `json:"enabled" bson:"enabled"`
 }
 
 type AvailableTopic struct {
@@ -64,13 +45,6 @@ type SentItem struct {
 	IsRead         bool                   `json:"is_read" bson:"is_read"`
 	Context        map[string]interface{} `json:"context" bson:"context"`
 	Entity         string                 `json:"entity" bson:"entity" required:"true"`
-}
-
-func (self *SentItem) IsValid() bool {
-	if len(self.Text) == 0 {
-		return false
-	}
-	return true
 }
 
 type SavedItem struct {
@@ -106,30 +80,6 @@ type LastSeen struct {
 	Organization string `json:"org" bson:"org"`
 	AppName      string `json:"app_name" bson:"app_name"`
 	Timestamp    int64  `json:"timestamp" bson:"timestamp" required:"true"`
-}
-
-type Gully struct {
-	BaseModel    `bson:",inline"`
-	User         string                 `json:"user" bson:"user"`
-	Organization string                 `json:"org" bson:"org"`
-	AppName      string                 `json:"app_name" bson:"app_name"`
-	Data         map[string]interface{} `json:"data" bson:"data" required:"true"`
-	Ident        string                 `json:"ident" bson:"ident" required:"true"`
-}
-
-func (self *Gully) IsValid(op_type int) bool {
-
-	if len(self.Ident) == 0 {
-		return false
-	}
-
-	if op_type == INSERT_OPERATION {
-		if len(self.Data) == 0 {
-			return false
-		}
-	}
-
-	return true
 }
 
 type UserLocale struct {

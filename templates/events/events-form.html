@@ -1,0 +1,39 @@
+{{ define "content" }}
+
+{{ $form := .form }}
+
+<div class="page-header">
+  <h2>{{ .title }}</h2>
+</div>
+
+<form action="/events/{{ $form.Event.Id.Hex }}" method="POST">
+
+  {{ if $form.Event.Id }}
+    <input type="hidden" name="_id" value="{{ $form.Event.Id.Hex }}">
+  {{ end }}
+
+  <div class="form-group">
+    <label for="ident">Event</label>
+    <input type="text" name="ident" class="form-control" id="ident" placeholder="Enter the ident" value="{{ $form.Event.Ident }}">
+    <span class="help-block">This should be unique and readable</span>
+  </div>
+
+  <div class="form-group">
+    <label for="app_name">Category</label>
+    <input type="text" name="app_name" class="form-control" id="app_name" placeholder="Enter the app_name of the article" value="{{ $form.Event.AppName }}">
+  </div>
+
+  <div class="form-group">
+    <label for="app_name">Channels</label>
+    <select name="channels" multiple class="form-control" required>
+      {{ range $channel := $form.Channels }}
+        <option value="{{ $channel.Name }}" {{ if $channel.Enabled }}selected{{ end }}>
+          {{ $channel.Name }}
+        </option>
+      {{ end }}
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+{{ end }}
