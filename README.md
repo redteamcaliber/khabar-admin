@@ -34,11 +34,3 @@ $ PORT=7000 khabar-admin # should start listening on port 7000
 ```
 
 If you specify `MONGODB_URL` env variable then it will connect to that particular connection string.
-
-#### Credits
-
-Thanks to [go-martini](https://github.com/go-martini/martini), [go-mgo](https://github.com/go-mgo/mgo) and [godep](https://github.com/tools/godep)
-
-## Todo
-
-- Use [mux](www.gorillatoolkit.org/pkg/mux) instead of martini.
