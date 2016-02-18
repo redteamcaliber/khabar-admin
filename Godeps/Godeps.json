@@ -1,9 +1,6 @@
 {
 	"ImportPath": "github.com/bulletind/khabar-admin",
-	"GoVersion": "go1.4.2",
-	"Packages": [
-		"./..."
-	],
+	"GoVersion": "go1.5.2",
 	"Deps": [
 		{
 			"ImportPath": "code.google.com/p/gcfg",
@@ -11,48 +8,48 @@
 		},
 		{
 			"ImportPath": "github.com/bulletind/khabar/db",
-			"Comment": "v1.4-155-gc6e5760",
-			"Rev": "c6e57601f0f21a7bb5e0c4f8662537d70431f74f"
+			"Comment": "v1.7-16-ge645820",
+			"Rev": "e6458205ba85c0cb7419c7df701eea4ff842be67"
 		},
 		{
 			"ImportPath": "github.com/bulletind/khabar/utils",
-			"Comment": "v1.4-155-gc6e5760",
-			"Rev": "c6e57601f0f21a7bb5e0c4f8662537d70431f74f"
+			"Comment": "v1.7-16-ge645820",
+			"Rev": "e6458205ba85c0cb7419c7df701eea4ff842be67"
 		},
 		{
 			"ImportPath": "github.com/gin-gonic/gin",
-			"Comment": "v1.0rc1-136-gfd5d429",
-			"Rev": "fd5d4294a5d5223d55fc76d7840f4b0ad91647bb"
+			"Comment": "v1.0rc1-219-g3d002e3",
+			"Rev": "3d002e382355cafc15d706b92899b1961d5b79e9"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Rev": "b982704f8bb716bb608144408cff30e15fbde841"
 		},
 		{
 			"ImportPath": "github.com/gorilla/schema",
-			"Rev": "21fdbd3ea3fa38707fb920c7b65b51931b1ac53a"
+			"Rev": "14c555599c2a4f493c1e13fd1ea6fdf721739028"
 		},
 		{
 			"ImportPath": "github.com/madhums/go-gin-mgo-demo/gin_html_render",
-			"Rev": "f425b4b28d73a4969d3a3f94077c2628bbeb45cd"
+			"Rev": "3c308faae11f2b76380f5b2251d4f15ca3daf2a8"
 		},
 		{
 			"ImportPath": "github.com/manucorporat/sse",
-			"Rev": "fe6ea2c8e398672518ef204bf0fbd9af858d0e15"
-		},
-		{
-			"ImportPath": "github.com/mattn/go-colorable",
-			"Rev": "40e4aedc8fabf8c23e040057540867186712faa5"
+			"Rev": "ee05b128a739a0fb76c7ebd3ae4810c1de808d6d"
 		},
 		{
 			"ImportPath": "golang.org/x/net/context",
-			"Rev": "51854aba4682903632d14998d47781fe34e62a02"
+			"Rev": "9946ad7d5eae91d8edca4f54d1a1e130a052e823"
 		},
 		{
-			"ImportPath": "gopkg.in/bluesuncorp/validator.v5",
-			"Comment": "v5.10.3",
-			"Rev": "77108103e5fd435ff31967e1a011fda801391c85"
+			"ImportPath": "gopkg.in/go-playground/validator.v8",
+			"Comment": "v8.16",
+			"Rev": "4c79e698231042063ef780f52bd0295392de42d7"
 		},
 		{
 			"ImportPath": "gopkg.in/mgo.v2",
-			"Comment": "r2015.06.03-3-g3569c88",
-			"Rev": "3569c88678d88179dcbd68d02ab081cbca3cd4d0"
+			"Comment": "r2015.10.05",
+			"Rev": "f402e3a216db333ae6b3ba68b9152a34a0bc6984"
 		},
 		{
 			"ImportPath": "gopkg.in/simversity/gotracer.v1",
