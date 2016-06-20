@@ -24,6 +24,12 @@
   </div>
 
   <div class="form-group">
+    <label for="sortindex">Sort</label>
+    <input type="number" name="sortindex" class="form-control" id="sortindex" placeholder="Enter the sort index" value="{{ $form.Event.SortIndex }}">
+    <span class="help-block">This should be unique for category</span>
+  </div>
+
+  <div class="form-group">
     <label for="app_name">Channels</label>
     <select name="channels" multiple class="form-control" required>
       {{ range $channel := $form.Channels }}

@@ -8,27 +8,27 @@
 <div class="table-responsive">
   <table class="table">
     <thead>
-      <th>#</th>
       <th>Event</th>
-      <th>Channels</th>
       <th>Category</th>
+      <th>Sort</th>
+      <th>Channels</th>
       <th></th>
     </thead>
     <tbody>
 
       {{ range $index, $event := $events }}
         <tr>
-          <td>{{ $index }}.</td>
           <td>
             <a href="/events/{{ $event.Id.Hex }}">{{ $event.Ident }}</a>
           </td>
           <td>
+            {{ $event.AppName }}
+          </td>
+          <td>{{ $event.SortIndex }}</td>
+          <td>
             {{ range $channel := $event.Channels }}
               {{ $channel }} &nbsp;
             {{ end }}
-          </td>
-          <td>
-            {{ $event.AppName }}
           </td>
           <td>
             <form action="/delete/events/{{ .Id.Hex }}" method="POST">

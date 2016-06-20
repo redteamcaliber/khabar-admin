@@ -10,7 +10,6 @@
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
-        <th>#</th>
         <th>Event</th>
         <th>Email <small class="text-muted">(default &nbsp; locked)</small></th>
         <th>Web <small class="text-muted">(default &nbsp; locked)</small></th>
@@ -23,7 +22,6 @@
           <input type="hidden" name="Preference.{{ $i }}.Ident" value="{{ $preference.Ident }}">
 
           <tr>
-            <td>{{ $i }}.</td>
             <td>{{ $preference.Ident }}</td>
 
             {{ range $j, $ch := $channels }}

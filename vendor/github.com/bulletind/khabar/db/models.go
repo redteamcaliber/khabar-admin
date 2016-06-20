@@ -30,6 +30,7 @@ type AvailableTopic struct {
 	BaseModel `bson:",inline"`
 	Ident     string   `json:"ident" bson:"ident" required:"true" form:"ident" binding:"required"`
 	AppName   string   `json:"app_name" bson:"app_name" required:"true" form:"app_name" binding:"required"`
+	SortIndex int      `json:"sortindex" bson:"sortindex" required:"true" form:"sortindex" binding:"required"`
 	Channels  []string `json:"channels" bson:"channels" required:"true" form:"channels" binding:"required"`
 }
 

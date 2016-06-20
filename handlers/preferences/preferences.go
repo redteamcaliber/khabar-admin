@@ -47,7 +47,7 @@ func List(c *gin.Context) {
 	}
 
 	// Get all events
-	err = db.C(kdb.AvailableTopicCollection).Find(nil).Sort("app_name").All(&events)
+	err = db.C(kdb.AvailableTopicCollection).Find(nil).Sort("app_name", "sortindex").All(&events)
 	if err != nil {
 		c.Error(err)
 	}

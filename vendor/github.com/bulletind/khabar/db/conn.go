@@ -9,14 +9,18 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
+	"crypto/tls"
 	"github.com/bulletind/khabar/utils"
+	"net"
+	"strings"
 )
 
 var Conn *MConn
 
 type MConn struct {
-	Session *mgo.Session
-	Dbname  string
+	Session    *mgo.Session
+	Dbname     string
+	ConnString string
 }
 
 func (self *MConn) getCursor(session *mgo.Session, table string,
@@ -257,12 +261,44 @@ func (self *MConn) Insert(table string, arguments ...interface{}) (_id string) {
 	return
 }
 
+func GetIndexes() map[string]string {
+	// define unique indexes
+	indexes := make(map[string]string)
+	indexes["channel"] = "name"
+	indexes["topics_available"] = "ident appname"
+	indexes["topics"] = "ident org user"
+
+	return indexes
+}
+
+func (self *MConn) InitIndexes() {
+	session := self.Session.Copy()
+	db := session.DB(self.Dbname)
+	defer session.Close()
+
+	for collection, keys := range GetIndexes() {
+		index := mgo.Index{
+			Key:        strings.Split(keys, " "),
+			Unique:     true,
+			DropDups:   true,
+			Background: true,
+			Sparse:     true,
+		}
+
+		err := db.C(collection).EnsureIndex(index)
+		if err != nil {
+			log.Println("Error creating index:", err)
+			panic(err)
+		}
+	}
+}
+
 var cached = struct {
 	sync.RWMutex
 	sessions map[string]*mgo.Session
 }{sessions: map[string]*mgo.Session{}}
 
-func GetConn(db_name string, address string, creds ...string) *MConn {
+func GetConn(connString, db_name string) *MConn {
 	//Check if the connection has been stored already.
 	var session *mgo.Session
 	var ok bool
@@ -272,43 +308,9 @@ func GetConn(db_name string, address string, creds ...string) *MConn {
 	cached.RUnlock()
 
 	if !ok {
-		var username, password string
-
-		if len(creds) > 0 {
-			username = creds[0]
-			if len(creds) > 1 {
-				password = creds[1]
-			}
-		}
-
-		// Timeout is the amount of time to wait for a server to respond when
-		// first connecting and on follow up operations in the session. If
-		// timeout is zero, the call may block forever waiting for a connection
-		// to be established.
-
-		// FailFast will cause connection and query attempts to fail faster when
-		// the server is unavailable, instead of retrying until the configured
-		// timeout period. Note that an unavailable server may silently drop
-		// packets instead of rejecting them, in which case it's impossible to
-		// distinguish it from a slow server, so the timeout stays relevant.
-
-		info := mgo.DialInfo{
-			Addrs:    []string{address},
-			Timeout:  60 * time.Second,
-			FailFast: true,
-			Database: db_name,
-			Username: username,
-			Password: password,
-		}
-
-		var err error
-		session, err = mgo.DialWithInfo(&info)
-		if err != nil {
-			panic(err)
-		}
+		session = getNewSession(connString, db_name)
 
 		//Save the Session for Later use.
-
 		cached.Lock()
 		cached.sessions[db_name] = session
 		cached.Unlock()
@@ -317,5 +319,41 @@ func GetConn(db_name string, address string, creds ...string) *MConn {
 	//Return only a Session & the name. Let the Consumer make a Session.Copy()
 	//to ensure that database state is resumed.
 
-	return &MConn{session, db_name}
+	return &MConn{session, db_name, connString}
+}
+
+func getNewSession(connString, db_name string) *mgo.Session {
+	// quick hack to allow SSL based connections, may be removed in future when parseURL supports it
+	// see also: https://github.com/go-mgo/mgo/issues/84
+	const SSL_SUFFIX = "?ssl=true"
+	useSsl := false
+
+	if strings.HasSuffix(connString, SSL_SUFFIX) {
+		connString = strings.TrimSuffix(connString, SSL_SUFFIX)
+		useSsl = true
+	}
+
+	dialInfo, err := mgo.ParseURL(connString)
+	if err != nil {
+		panic(err)
+	}
+
+	dialInfo.Timeout = 10 * time.Second
+
+	if useSsl {
+		config := tls.Config{}
+		config.InsecureSkipVerify = true
+
+		dialInfo.DialServer = func(addr *mgo.ServerAddr) (net.Conn, error) {
+			return tls.Dial("tcp", addr.String(), &config)
+		}
+	}
+
+	// get a mgo session
+	session, err := mgo.DialWithInfo(dialInfo)
+	if err != nil {
+		panic(err)
+	}
+
+	return session
 }

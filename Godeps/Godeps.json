@@ -1,6 +1,7 @@
 {
 	"ImportPath": "github.com/bulletind/khabar-admin",
 	"GoVersion": "go1.5.2",
+	"GodepVersion": "v74",
 	"Deps": [
 		{
 			"ImportPath": "code.google.com/p/gcfg",
@@ -8,13 +9,13 @@
 		},
 		{
 			"ImportPath": "github.com/bulletind/khabar/db",
-			"Comment": "v1.7-16-ge645820",
-			"Rev": "e6458205ba85c0cb7419c7df701eea4ff842be67"
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
 		},
 		{
 			"ImportPath": "github.com/bulletind/khabar/utils",
-			"Comment": "v1.7-16-ge645820",
-			"Rev": "e6458205ba85c0cb7419c7df701eea4ff842be67"
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
 		},
 		{
 			"ImportPath": "github.com/gin-gonic/gin",
@@ -60,6 +61,71 @@
 			"ImportPath": "gopkg.in/simversity/gottp.v3",
 			"Comment": "v3.3",
 			"Rev": "b8c6bc147875efde7569cae23ebdd05776cbccaf"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/gopkg.in/mgo.v2",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/gopkg.in/mgo.v2/bson",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/config",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/gopkg.in/simversity/gottp.v3",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/gopkg.in/simversity/gottp.v3/utils",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/gopkg.in/mgo.v2/internal/sasl",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/gopkg.in/mgo.v2/internal/scram",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/gopkg.in/simversity/gotracer.v1",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/gopkg.in/simversity/gottp.v3/conf",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/code.google.com/p/gcfg",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/code.google.com/p/gcfg/scanner",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/code.google.com/p/gcfg/token",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
+		},
+		{
+			"ImportPath": "github.com/bulletind/khabar/vendor/code.google.com/p/gcfg/types",
+			"Comment": "v1.7-46-g3e266d4",
+			"Rev": "3e266d47a1fde9d1551aa7e3d55edd841ceacf49"
 		}
 	]
 }

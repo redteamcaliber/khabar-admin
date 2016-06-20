@@ -20,11 +20,23 @@ type FormEvent struct {
 
 // New event
 func New(c *gin.Context) {
+	db := c.MustGet("db").(*mgo.Database)
+
+	sortIndex := 1
+	var lastTopic *kdb.AvailableTopic
+	err := db.C(kdb.AvailableTopicCollection).Find(bson.M{}).Sort("-sortindex").One(&lastTopic)
+	if err == nil {
+		sortIndex = lastTopic.SortIndex + 1
+	}
+
 	form := FormEvent{
 		Channels: []kdb.Channel{
 			kdb.Channel{Name: "email", Enabled: true},
 			kdb.Channel{Name: "web", Enabled: true},
 			kdb.Channel{Name: "push", Enabled: true},
+		},
+		Event: kdb.AvailableTopic{
+			SortIndex: sortIndex,
 		},
 	}
 
@@ -88,7 +100,7 @@ func Edit(c *gin.Context) {
 func List(c *gin.Context) {
 	db := c.MustGet("db").(*mgo.Database)
 	events := []kdb.AvailableTopic{}
-	err := db.C(kdb.AvailableTopicCollection).Find(nil).Sort("app_name").All(&events)
+	err := db.C(kdb.AvailableTopicCollection).Find(nil).Sort("app_name", "sortindex").All(&events)
 	if err != nil {
 		c.Error(err)
 	}
@@ -114,6 +126,7 @@ func Update(c *gin.Context) {
 	doc := bson.M{
 		"ident":      event.Ident,
 		"app_name":   event.AppName,
+		"sortindex":  event.SortIndex,
 		"channels":   event.Channels,
 		"updated_on": time.Now().UnixNano() / int64(time.Millisecond),
 	}
